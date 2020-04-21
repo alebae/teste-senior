@@ -1,0 +1,74 @@
+
+<?php
+$title = 'Realizando vendas';
+$this->headTitle($title);
+?>
+<?=$this->flashMessenger()
+    ->setMessageOpenFormat('<div class="alert alert-success">')
+    ->setMessageSeparatorString('')
+    ->setMessageCloseString('</div>')
+    ->render();?>
+
+<div class="card text-white bg-secondary mb-3">
+  <div class="card-body mycontainer">
+    <p class="card-text"><strong>Venda atual:</strong> <?=$idDocumento?></p>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <!-- Div com o carrinho de produtos -->
+        <div class="card">
+            <div class="card-header"><strong>Lista de produtos</strong></div>
+            <div class="card-body carrinho">            
+                <p class="informe-adicionar">Adicione um produto informando o seu código</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <!-- Formulário para pesquisa de produto -->
+        <div class="card bg-light mb-3">
+            <div class="card-header"><strong>Produto</strong></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="row">
+                                <div class="col-12 col-sm pr-sm-0">
+                                    <input type="text" name="produto" id="produto" placeholder="Informe o código do produto..." class="form-control">
+                                </div>
+                                <div class="col-12 col-sm-auto pl-sm-0">
+                                    <button type="button" id="pesquisar" class="btn btn-primary btn-block"><i class="material-icons md-24 btcenter">search</i></button>                        
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="result-error alert alert-danger">Produto não cadastrado!</div>
+        </div>
+        <div class="row">
+            <div class="card linha-produto result-success">
+                <div class="card-body">
+                    <h5 class="card-title"><span class="txt-nome"></span></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Cód.: <span class="txt-codigo"></span></h6>
+                    <p class="card-text"><span class="txt-valor"></span>
+                        <input type="hidden" name="idProduto" id="idProduto" value="" />
+                        <button id="adicionar" class="btn btn-sm btn-success">Adicionar</button>
+                    </p>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <form action="<?=$this->url('venda', ['action' => 'confirmar'])?>" method="POST" name="formConfirma" id="formConfirma">
+            <button type="button" class="btn btn-danger btn-md center-block" id="cancelar"><i class="material-icons md-24 align-button">remove</i>Cancelar</button>        
+            <input type="hidden" name="idDocumento" id="idDocumento" value="" />
+            <button type="button" class="btn btn-success btn-md center-block" id="confirmar"><i class="material-icons md-24 align-button">check</i> Confirmar</button>
+        </form>
+     </div>
+</div>

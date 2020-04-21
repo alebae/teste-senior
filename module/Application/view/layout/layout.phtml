@@ -1,0 +1,61 @@
+<?php 
+$url = str_replace("Novo/", "", $_SERVER["REQUEST_URI"]);
+?>
+
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('Teste Senior Sistemas')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendName('description', 'Sistema de vendas para a realização do teste para a Senior Sistemas.')
+            ->appendName('keywords', 'CRM, vendas, carrinho de compras, pedidos, produto')
+            ->appendName('robots', '')
+            ->appendName('revisit-after', '1 day')
+            ->appendName('language', 'Portuguese')
+            ->appendName('generator', 'N/A')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+            ->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8')            
+        ?>
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+            ->prependStylesheet($this->basePath('css/fonts.css'))
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?= $this->inlineScript()            
+            ->prependFile($this->basePath('js/sweetalert.min.js'))
+            ->prependFile($this->basePath('js/script-venda.js'))
+            ->prependFile($this->basePath('js/bouncer.polyfills.min.js'))
+            ->prependFile($this->basePath('js/bouncer.min.js'))
+            ->prependFile($this->basePath('js/jquery-inputfile.js'))
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/popper.min.js'))
+            ->prependFile($this->basePath('js/jquery-3.3.1.min.js'))
+            
+        ?>
+    </head>
+    <body>        
+        <nav class="fixed-top">
+            <div class="topnav" id="menuTop">
+                <h3 class="mobile-page-title" id="title-mobile">Teste Alexandre</h3>
+                <a href="<?= $this->url('venda') ?>" <?=($url == '/venda') ? 'class="active"' : ''?>>Dashboard</a>
+                <a href="<?= $this->serverurl('/venda/carrinho') ?>" <?=($url == '/venda/carrinho') ? 'class="active"' : ''?>>Vendas</a>
+                <a href="<?= $this->serverurl('/venda/produto') ?>" <?=($url == '/venda/produto') ? 'class="active"' : ''?>>Produtos</a>
+                <a href="javascript:void(0);" class="icon" onclick="hamburguerMenu()">
+                    <i class="material-icons md-18 text-gray-300">dehaze</i>
+                </a>
+            </div>
+        </nav>
+        <div class=""></div>
+        <div class="container">
+            <?= $this->content ?>            
+        </div>
+        <?= $this->inlineScript() ?>
+    </body>
+</html>

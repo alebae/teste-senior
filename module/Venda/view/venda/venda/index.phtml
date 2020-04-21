@@ -1,0 +1,39 @@
+<?php
+$title = 'Dashboard de vendas';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-sm-4">
+        <!-- Div com valor total de vendas confirmadas -->
+        <div class="card text-white bg-success">
+            <div class="card-header text-center">                
+                <strong>Valor total de vendas</strong>
+            </div>
+            <div class="card-body carrinho">            
+                <h2 class="text-center">R$ <?=$valorTotalPedidos?></h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <!-- Div com número total de vendas confirmadas -->
+        <div class="card text-white bg-dark">
+            <div class="card-header text-center">
+                <strong>Total de vendas</strong>
+            </div>
+            <div class="card-body carrinho">           
+                <h2 class="text-center"><?=$totalPedidos?></h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <!-- Div com número total de produtos cadastrados no sistema -->
+        <div class="card text-white bg-info">
+            <div class="card-header text-center">
+                <strong>Total de produtos</strong>
+            </div>
+            <div class="card-body carrinho">            
+                <h2 class="text-center"><?=$totalProdutos?></h2>
+            </div>
+        </div>
+    </div>
+</div>

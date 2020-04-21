@@ -1,0 +1,71 @@
+<?php
+$title = 'Novo produto';
+$this->headTitle($title);
+?>
+
+<h3><?=$this->escapeHtml($title)?></h3>
+
+<?php 
+$form->setAttribute('action', $this->url('produto', ['action' => 'adicionar']));
+$form->setAttribute('data-validate', '');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+$id = $this->form->get('id');
+$codigo = $this->form->get('codigo');
+$descricao = $this->form->get('descricao');
+$preco = $this->form->get('preco');
+
+$codigo->setAttribute('class', 'form-control');
+$codigo->setAttribute('autofocus', 'autofocus');
+$codigo->setAttribute('required', 'required');
+
+
+$descricao->setAttribute('class', 'form-control');
+$descricao->setAttribute('autofocus', 'autofocus');
+$descricao->setAttribute('required', 'required');
+
+
+$preco->setAttribute('class', 'form-control');
+$preco->setAttribute('autofocus', 'autofocus');
+$preco->setAttribute('required', 'required');
+
+$preco->setAttribute('dir', 'rtl');
+
+$submit = $this->form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary bn-sm');
+?>
+
+<?=$this->formElement($id)?>
+<hr />
+<div class="form-group">
+    <div class="col-md-12">
+        <?=$this->formLabel($codigo)?> <small>(Somente números)</small>
+        <?=$this->formElement($codigo)?>
+        <?=$this->formElementErrors()->render($codigo, ['class' => 'help-block'])?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        <?=$this->formLabel($descricao)?>
+        <?=$this->formElement($descricao)?>
+        <?=$this->formElementErrors()->render($descricao, ['class' => 'help-block'])?>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        <?=$this->formLabel($preco)?>
+        <?=$this->formElement($preco)?>
+        <?=$this->formElementErrors()->render($preco, ['class' => 'help-block'])?>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <a href="<?=$this->url('produto',['action'=>'index'])?>" class="btn btn-danger btn-md center-block"><i class="material-icons md-24 align-button">remove</i>Cancelar</a>
+        <button type="submit" class="btn btn-success btn-md center-block" id="adicionar-prod"><i class="material-icons md-24 align-button">check</i> Adicionar</button>
+     </div>
+</div>
+<?php echo $this->form()->closeTag($form)?>

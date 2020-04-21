@@ -1,0 +1,43 @@
+
+<?php
+$title = 'Produtos';
+$this->headTitle($title);
+?>
+<?=$this->flashMessenger()
+    ->setMessageOpenFormat('<div class="alert alert-success">')
+    ->setMessageSeparatorString('')
+    ->setMessageCloseString('</div>')
+    ->render();?>
+
+<div class="row">
+    <div class="col">
+        <h1><?=$this->escapeHtml($title)?></h1>
+    </div>
+    <div class="col" style="text-align:right;">
+        <a href="<?=$this->url('produto', ['action' => 'adicionar'])?>" class="btn btn-success bt-add-mobile"><i class="material-icons md-24 align-button">playlist_add</i></a>
+        <a href="<?=$this->url('produto', ['action' => 'adicionar'])?>" class="btn btn-success bt-add-desktop"><i class="material-icons md-24 align-button">playlist_add</i> Adicionar produto</a>
+    </div>
+</div>
+<div class="row">
+    <table class="table table-stripped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Valor</th>      
+            </tr>
+        </thead>        
+        <?php 
+            foreach ($produtos as $p) { ?>
+            <tr>
+                <td><?=$p->getCodigo()?></td>
+                <td><?=$p->getDescricao()?></td>
+                <td><?=number_format($p->getPreco(),2,",",".")?></td>
+            </tr>
+        <?php   
+            } 
+        ?>
+    </table>
+</div>
+
+
