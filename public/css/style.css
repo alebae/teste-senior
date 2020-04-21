@@ -32,10 +32,6 @@ div.container a.navbar-brand > img {
     margin-top: -2px;
 }
 
-h3.title-test {
-    color: #fff;
-}
-
 div.menu-separator {
     margin-right:10px;
 }
@@ -145,16 +141,11 @@ div.menu-separator {
     background-color: #4CAF50;
     color: white;
   }
-  
-  .topnav .icon {
-    display: none;
-  }
-
-  .bt-add-mobile {
-    display: none;
-  }
-
-  .mobile-page-title {
+ 
+  .bt-add-mobile,
+  .mobile-page-title,
+  .topnav .icon
+   {
     display: none;
   }
 
@@ -194,5 +185,8 @@ div.menu-separator {
       top: 0;
     } 
 
+    div.box-info {
+        margin:2px;
+    }
   }
   
