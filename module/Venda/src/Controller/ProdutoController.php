@@ -86,7 +86,7 @@ class ProdutoController extends AbstractActionController {
         $request = $this->getRequest();
         $info = $request->getPost();
 
-        $p = $this->table->getProduto($info->produto);
+        $p = $this->table->getProdutoCodigo($info->produto);
         
         $data = [
             'achou' => ($p) ? true : false,
