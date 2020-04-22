@@ -19,25 +19,29 @@ $this->headTitle($title);
     </div>
 </div>
 <div class="row">
-    <table class="table table-stripped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Código</th>
-                <th>Descrição</th>
-                <th>Valor</th>      
-            </tr>
-        </thead>        
-        <?php 
-            foreach ($produtos as $p) { ?>
-            <tr>
-                <td><?=$p->getCodigo()?></td>
-                <td><?=$p->getDescricao()?></td>
-                <td><?=number_format($p->getPreco(),2,",",".")?></td>
-            </tr>
-        <?php   
-            } 
-        ?>
-    </table>
+    <?php if(count($produtos)) { ?>
+            <table class="table table-stripped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>      
+                </tr>
+            </thead>        
+            <?php 
+                foreach ($produtos as $p) { ?>
+                <tr>
+                    <td><?=$p->getCodigo()?></td>
+                    <td><?=$p->getDescricao()?></td>
+                    <td><?=number_format($p->getPreco(),2,",",".")?></td>
+                </tr>
+            <?php   
+                } 
+            ?>
+            </table>
+        <?php } else { ?>
+        <div class="alert alert-danger" style="width:100%">Nenhum produto encontrado.</div> 
+    <?php } ?>
 </div>
 
 
